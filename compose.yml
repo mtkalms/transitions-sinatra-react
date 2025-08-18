@@ -1,0 +1,26 @@
+volumes:
+  pgdata:
+
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: transitions_dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+
+  app:
+    image: ubuntu:24.04
+    command: [ "tail", "-f", "/dev/null" ]
+    volumes:
+      - .:/opt/project
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=dev
+      - DATABASE_PASSWORD=dev
+      - DATABASE_NAME=transitions_dev
+    working_dir: /opt/project/

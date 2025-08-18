@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: transitions_dev
+  pool: 2
+  username: dev
+  password: dev
+  host: db
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: transitions_test
+  pool: 2
+  username: dev
+  password: dev
+  host: db
+  port: 5432
