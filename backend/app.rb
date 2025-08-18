@@ -4,5 +4,5 @@ require 'sinatra/activerecord'
 Dir.glob('./{models,controllers}/*.rb').each { |file| require file }
 
 get '/' do
-  'Hello world!'
+  "Welcome to the Ruby side, where there's no one else but me."
 end
