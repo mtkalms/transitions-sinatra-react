@@ -15,3 +15,5 @@ gem "rack", "~> 3.2"
 gem "rubocop", "~> 1.79"
 
 
+
+gem "rerun", "~> 0.14.0"
