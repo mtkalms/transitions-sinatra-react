@@ -27,7 +27,7 @@
     "vscode": {
       "extensions": [
         "Shopify.ruby-lsp",
-        "Oracle.sql-developer"
+        "rubocop.vscode-rubocop"
       ]
     }
   }
