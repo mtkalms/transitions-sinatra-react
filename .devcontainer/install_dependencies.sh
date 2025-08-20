@@ -8,3 +8,5 @@ echo "Setup Ruby Environment"
 
 cd /opt/project/backend
 bundle install
+
+rake db:migrate

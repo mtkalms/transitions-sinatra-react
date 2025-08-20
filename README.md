@@ -7,3 +7,21 @@ As part of my **Transitions** series, this repository explores the transition of
 ## Challenge
 
 During the transition, parts of the frontend have already been transferred to React, while the rest are still Sinatra pages. The challange is to deliver both parts seemlessly in the same application with shared components (menu, sidebar, footer, ...) and styles.
+
+## Usage
+
+### Backend
+
+To run the sinatra application:
+
+```bash
+cd backend
+ruby app.rb
+```
+
+To run the sinatra application and rerun on file system changes:
+
+```bash
+cd backend
+rerun 'ruby app.rb'
+```
