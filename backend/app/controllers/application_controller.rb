@@ -1,24 +1,71 @@
 # app/controllers/application_controller.rb
-require "sinatra/base"
+require 'sinatra/base'
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
-  set :views, File.expand_path("../../views", __dir__)
-  set :public_folder, File.expand_path("../../public", __dir__)
+  helpers AuthenticationHelper
 
-  before do
-    @app_name = "Modular Sinatra App"
+  set :root, File.expand_path('..', __dir__)
+  set :views, File.expand_path('../views', __dir__)
+  set :public_folder, File.expand_path('../public', __dir__)
+
+  configure do
+    enable :sessions
+    set :session_secret, ENV.fetch('SESSION_SECRET', 'some-long-dev-secret-that-is-at-least-64-spaces-long-and-also-a-lot-more')
+    register Sinatra::Flash
   end
 
   get '/' do
-    "Welcome to the Ruby side, where there's no one else but me."
+    authenticate!
+    erb :home
   end
 
   not_found do
-    "This is not the page you are looking for."
+    erb :not_found
   end
 
   error do
-    status 500
+    'There was an error while processing your request.'
+  end
+
+  # LOGIN
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    user = login!(params[:email], params[:password])
+    original_request = session[:original_request]
+    session[:original_request] = nil
+    flash[:notice] = "Welcome back #{user.name}"
+    redirect original_request || '/'
+  rescue StandardError
+    flash[:error] = 'Login failed. Please try again.'
+    redirect '/login'
+  end
+
+  # SIGNUP
+  get '/signup' do
+    erb :signup
+  end
+
+  post '/signup' do
+    User.create!(
+      name: params['name'],
+      email: params['email'],
+      password: params['password'],
+      password_confirmation: params['password_confirmation']
+    )
+    flash[:notice] = 'Successfully signed up.'
+    redirect '/login'
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = 'Signup failed. Please try again.'
+    redirect '/signup'
+  end
+
+  get '/logout' do
+    logout!
+    flash[:notice] = 'Successfully logged out.'
+    redirect '/login'
   end
 end
