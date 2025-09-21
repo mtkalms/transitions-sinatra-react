@@ -10,18 +10,26 @@ During the transition, parts of the frontend have already been transferred to Re
 
 ## Usage
 
+### Database
+
+To run the migrations
+
+```bash
+rake db:migrate
+```
+
 ### Backend
 
 To run the sinatra application:
 
 ```bash
 cd backend
-ruby app.rb
+rackup
 ```
 
 To run the sinatra application and rerun on file system changes:
 
 ```bash
 cd backend
-rerun 'ruby app.rb'
+rerun rackup
 ```
