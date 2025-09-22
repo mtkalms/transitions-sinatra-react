@@ -5,10 +5,6 @@ require 'sinatra/flash'
 class ApplicationController < Sinatra::Base
   helpers AuthenticationHelper
 
-  set :root, File.expand_path('..', __dir__)
-  set :views, File.expand_path('../views', __dir__)
-  set :public_folder, File.expand_path('../public', __dir__)
-
   configure do
     enable :sessions
     set :session_secret, ENV.fetch('SESSION_SECRET', 'some-long-dev-secret-that-is-at-least-64-spaces-long-and-also-a-lot-more')
