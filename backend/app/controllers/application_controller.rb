@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     user = login!(params[:email], params[:password])
     original_request = session[:original_request]
     session[:original_request] = nil
-    flash[:notice] = "Welcome back #{user.name}"
+    flash[:notice] = "Welcome back, #{user.name.capitalize}!"
     redirect original_request || '/'
   rescue StandardError
     flash[:error] = 'Login failed. Please try again.'

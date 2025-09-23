@@ -1,18 +1,42 @@
-<form id="signup" method="post" action="/signup">
-  <label for="name">Name</label>
-  <input id="name" name="name" type="text" required>
-
-  <label for="email">Email</label>
-  <input id="email" name="email" type="email" required>
-
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" required>
-
-  <label for="password_confirmation">Confirm password</label>
-  <input id="password_confirmation" name="password_confirmation" type="password" required>
-
-  <button type="submit">Create account</button>
-</form>
-
-<p>Already have an account? <a href="/login">Log in</a></p>
-<%= styled_flash %>
+<div class="card" style="max-width: 375px; margin: auto">
+  <div class="card-body">
+    <form id="login" method="post" action="/signup">
+      <div class="form-floating mb-3">
+        <input required
+               id="name"
+               class="form-control"
+               name="name"
+               type="text">
+        <label for="name">Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input required
+               id="email"
+               class="form-control"
+               name="email"
+               type="email">
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input required
+               id="password"
+               class="form-control"
+               name="password"
+               type="password">
+        <label for="password">Password</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input required
+               id="password-confirmation"
+               class="form-control"
+               name="password-confirmation"
+               type="password">
+        <label for="password-confirmation">Password Confirmation</label>
+      </div>
+      <button class="btn btn-primary" type="submit">Sign up</button>
+    </form>
+  </div>
+  <div class="card-body">
+    Already have an account? <a class="card-link" href="/login">Sign in</a>
+  </div>
+</div>
