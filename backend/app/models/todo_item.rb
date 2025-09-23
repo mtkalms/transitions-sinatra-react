@@ -1,5 +1,5 @@
 class TodoItem < ActiveRecord::Base
-  belongs_to :todo_items
+  belongs_to :todo_list
 
   validates :task, presence: true
   validates :done, inclusion: { in: [true, false] }
