@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
   configure do
     enable :sessions
     set :session_secret, ENV.fetch('SESSION_SECRET', 'some-long-dev-secret-that-is-at-least-64-spaces-long-and-also-a-lot-more')
+    set :erb, :layout => :'layout'
     register Sinatra::Flash
   end
 
