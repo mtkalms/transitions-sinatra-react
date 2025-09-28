@@ -1,3 +1,9 @@
-require_relative "config/environment"
+require_relative 'config/environment'
 
-run ApplicationController
+map '/todos' do
+  run TodoListController
+end
+
+map '/' do
+  run ApplicationController
+end

@@ -1,0 +1,25 @@
+<div class="list-group mb-3">
+  <% @todos.each do |todo| %>
+    <a href="/todos/<%=todo.id %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+      <i class="bi bi-list-check text-body-tertiary pe-2"></i>
+      <div class="ms-2 me-auto text-body-secondary text-body">
+        <%= todo.name %>
+      </div>
+      <div class="d-flex" style="gap: 0.25em">
+        <% if todo.todo_items.where(done: true).count > 0  %>
+          <span class="badge text-bg-success rounded-pill">
+            <%= todo.todo_items.where(done: true).count %>
+          </span>
+        <% end %>
+        <% if todo.todo_items.where(done: false).count > 0 %>
+          <span class="badge text-bg-secondary rounded-pill">
+            <%= todo.todo_items.where(done: false).count %>
+          </span>
+        <% end %>
+      </div>
+    </a>
+  <% end %>
+</div>
+<a class="btn btn-success" href="/todos/new">
+  <i class="bi bi-plus" style="font-weight: bold"></i> Create
+</a>

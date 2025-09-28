@@ -1,0 +1,21 @@
+<form id="login" method="post" action="/todos">
+  <div class="form-floating mb-3">
+    <input required
+           id="name"
+           class="form-control"
+           name="name"
+           placeholder="Name"
+           type="text">
+    <label for="name">Name</label>
+  </div>
+  <div class="form-floating mb-3">
+    <textarea
+      id="description"
+      class="form-control"
+      rows="4"
+      name="description">
+    </textarea>
+    <label for="description">Description</label>
+  </div>
+  <button class="btn btn-primary" type="submit">Create</button>
+</form>
